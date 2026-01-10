@@ -6,10 +6,10 @@ import time
 from streamlit_folium import st_folium
 from ultralytics import YOLO
 
-# --- 1. PAGE SETUP ---
+
 st.set_page_config(page_title="🔥 Sentinel Command", layout="wide", page_icon="🚁")
 
-# --- 2. APPLY YOUR CUSTOM DRONE UI STYLES ---
+
 st.markdown("""
     <style>
     /* Import Google Font to match your design */
@@ -63,7 +63,6 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# Header Section
 col_header1, col_header2 = st.columns([3, 1])
 with col_header1:
     st.title("🚁 Sentinel: Drone Reconnaissance System")
@@ -72,17 +71,15 @@ with col_header2:
 
 st.markdown("---")
 
-# --- 3. LOAD AI MODEL ---
 @st.cache_resource
 def load_model():
     return YOLO('yolov8n.pt') 
 
 model = load_model()
 
-# --- 4. DASHBOARD LAYOUT ---
 col1, col2 = st.columns([1, 1]) 
 
-# === LEFT COLUMN: SATELLITE MAP ===
+
 with col1:
     st.subheader("🌍 Geospatial Live Feed")
     my_location = [12.9716, 77.5946]  # Example: Bangalore
@@ -117,9 +114,9 @@ with col1:
         except:
             pass
 
-# === RIGHT COLUMN: DRONE AI VISION (STYLED) ===
+
 with col2:
-    # We use Markdown to add your custom Header Icon/Text from the HTML
+   
     st.markdown("""
         <div style="text-align: center; margin-bottom: 10px;">
             <span style="font-size: 2rem;">🚁</span>
@@ -127,10 +124,10 @@ with col2:
         </div>
     """, unsafe_allow_html=True)
     
-    # This standard uploader is now styled by the CSS at the top
+    
     video_file = st.file_uploader("Upload Drone Footage", type=['mp4'])
     
-    # Add your "Limits" text below
+    
     st.caption("Limit 200MB per file • MP4, MPEG4")
     
     if not video_file:
