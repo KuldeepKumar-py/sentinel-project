@@ -1,5 +1,6 @@
 streamlit
+opencv-python
 ultralytics
-opencv-python-headless
-folium
+twilio
 streamlit-folium
+folium
